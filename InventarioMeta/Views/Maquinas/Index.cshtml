@@ -1,0 +1,76 @@
+﻿@model IEnumerable<InventarioMeta.Models.Maquinas>
+
+@{
+    ViewBag.Title = "Cadastro de máquinas";
+}
+
+<h2>Cadastro de Máquinas</h2>
+
+<p>
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <a href="@Url.Action("Create","Maquinas")">
+                <button type="submit" value="Criar" class="btn btn-success waves-effect waves-themed">
+                    Cadastrar nova máquina
+                </button>
+            </a>
+        </div>
+    </div>
+</p>
+<table class="table">
+    <tr>
+        <th>
+            <label>Processador</label>
+        </th>
+        <th>
+            <label>Memória RAM</label>
+        </th>
+        <th>
+            <label>Sistema Operacional</label>
+        </th>
+        <th>
+            <label>Tipo Armazenamento</label>
+        </th>
+        <th>
+            <label>Espaço de Armazenamento</label>
+        </th>
+        <th>
+            <label>Adaptador Wifi</label>
+        </th>
+        <th>
+            <label>Responsável</label>
+        </th>
+
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.Processador)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.RAM)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.SistemaOperacional)
+    </td>
+    
+    <td>
+        @Html.DisplayFor(modelItem => item.EspacoArmazenamento)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.AdaptadorWifi)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Responsavel)
+    </td>
+    <td>
+        @Html.ActionLink("Editar", "Edit", new { id = item.Id }) |
+        @Html.ActionLink("Detalhes", "Details", new { id = item.Id }) |
+        @Html.ActionLink("Deletar", "Delete", new { id = item.Id })
+    </td>
+</tr>
+}
+
+</table>

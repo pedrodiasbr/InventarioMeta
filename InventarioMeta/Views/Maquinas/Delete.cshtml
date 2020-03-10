@@ -1,0 +1,91 @@
+﻿@model InventarioMeta.Models.Maquinas
+
+<div class="form-group">
+    <div class="col-md-offset-2 col-md-10">
+        <a href="@Url.Action("Index","Maquinas")">
+            <button type="button" value="Retornar" class="btn btn-danger waves-effect waves-themed">
+                Retornar
+            </button>
+        </a>
+    </div>
+</div>
+@{
+    ViewBag.Title = "Deletar máquina";
+}
+
+
+<h3>Tem certeza que gostaria de excluir os registros?</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dl class="dl-horizontal">
+            <dt>
+                <label>Processador</label>
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Processador)
+            </dd>
+
+            <dt>
+                <label>Memória RAM</label>
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.RAM)
+            </dd>
+
+            <dt>
+                <label>Sistema Operacional</label>
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.SistemaOperacional)
+            </dd>
+
+            <dt>
+                <label>Armazenamento (GB)</label>
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.EspacoArmazenamento)
+            </dd>
+
+            <dt>
+                <label>Adaptador Wifi</label>
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.AdaptadorWifi)
+            </dd>
+
+            <dt>
+                <label>Responsável</label>
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Responsavel)
+            </dd>
+
+
+        </dl>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+<div class="form-actions no-color">
+    <button type="submit" value="Deletar" class="btn btn-danger waves-effect waves-themed">
+        Deletar
+    </button> |
+
+    <a href="@Url.Action("Index","Maquinas")">
+        <button type="button" value="Retornar" class="btn btn-danger waves-effect waves-themed">
+            Retornar
+        </button>
+    </a>
+</div>
+    }
+</div>

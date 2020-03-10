@@ -1,0 +1,85 @@
+﻿@model InventarioMeta.Models.Maquinas
+
+@{
+    ViewBag.Title = "Detalhes";
+}
+ <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <a href="@Url.Action("Index","Maquinas")">
+                <button type="submit" value="Retornar" class="btn btn-danger waves-effect waves-themed">
+                    Retornar
+                </button>
+            </a>
+        </div>
+    </div>
+<h2>Detalhes</h2>
+
+<div>
+    <h4>Maquinas</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            <label>Processador</label>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Processador)
+        </dd>
+
+        <dt>
+            <label>Memória RAM</label>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RAM)
+        </dd>
+
+        <dt>
+            <label>Sistema Operacional</label>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SistemaOperacional)
+        </dd>
+
+        <dt>
+            <label>Armazenamento (GB)</label>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EspacoArmazenamento)
+        </dd>
+
+        <dt>
+            <label>Adaptador Wifi</label>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AdaptadorWifi)
+        </dd>
+
+        <dt>
+            <label>Responsável</label>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Responsavel)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    
+        <div class="form-actions no-color">
+            <a href="@Url.Action("Edit","Maquinas", new { id = Model.Id })">
+                <button type="submit" value="Editar" class="btn btn-warning waves-effect waves-themed">
+                    Editar
+                </button>
+            </a> |
+            <a href="@Url.Action("Index","Maquinas")">
+                <button type="submit" value="Retornar" class="btn btn-danger waves-effect waves-themed">
+                    Retornar
+                </button>
+            </a>
+        </div>
+</p>
