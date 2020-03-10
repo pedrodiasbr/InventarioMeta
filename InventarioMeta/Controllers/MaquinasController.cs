@@ -1,10 +1,5 @@
-﻿using System;
+﻿
 using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
-using System.Linq;
-using System.Net;
-using System.Web;
 using System.Web.Mvc;
 using InventarioMeta.Models;
 
@@ -61,10 +56,10 @@ namespace InventarioMeta.Controllers
             if (ModelState.IsValid)
             {
                 return RedirectToAction("Index");
+              
             }
 
             maquinas.TiposArmazenamentos = ObterTiposArmazenamento();
-
             return View(maquinas);
         }
 
@@ -90,6 +85,7 @@ namespace InventarioMeta.Controllers
         {
             if (ModelState.IsValid)
             {
+                
                 return RedirectToAction("Index");
             }
             return View(maquinas);
