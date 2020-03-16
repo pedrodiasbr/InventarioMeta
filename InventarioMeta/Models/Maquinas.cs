@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Web;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Web.Mvc;
-
 namespace InventarioMeta.Models
 {
     public class Maquinas
@@ -26,7 +23,7 @@ namespace InventarioMeta.Models
 
         [Required(ErrorMessage = "Informe o tipo de armazenamento")]
         public int CodigoTipoArmazenamento { get; set; }
-
+        [NotMapped]
         public List<SelectListItem> TiposArmazenamentos { get; set; }
     }
 }

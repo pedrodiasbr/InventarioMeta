@@ -18,7 +18,6 @@
     <script src="~/Scripts/dialogs.js"></script>
     <script src="~/Scripts/util.js"></script>
     @RenderSection("scripts", required: false)
-
     @{
         String diretorioVirtual = Request.ApplicationPath.Replace("/", String.Empty);
     }
@@ -85,8 +84,8 @@
                     </div>
                     <div class="ml-auto d-flex">
                         <div>
-                            @*<a href="#" data-toggle="dropdown" title="@WebAppInterno.Models.UsuarioModel.NomeAtual" class="header-icon d-flex align-items-center justify-content-center ml-2">
-                                <img src="~/Content/layout/img/avatar-m.png" class="profile-image rounded-circle" alt="Dr. Codex Lantern">*@
+                            <a href="#" data-toggle="dropdown" title="" class="header-icon d-flex align-items-center justify-content-center ml-2">
+                                <img src="~/Content/layout/img/avatar-m.png" class="profile-image rounded-circle" alt="Dr. Codex Lantern">
 
                             </a>
                             <div class="dropdown-menu dropdown-menu-animated dropdown-lg">
@@ -95,9 +94,9 @@
                                         <span class="mr-2">
                                             <img src="~/Content/layout/img/avatar-m.png" class="rounded-circle profile-image" alt="Dr. Codex Lantern">
                                         </span>
-                                        @*<div class="info-card-text">
-                                                <div class="fs-lg text-truncate text-truncate-lg">@WebAppInterno.Models.UsuarioModel.NomeUsuarioLogado</div>
-                                            </div>*@
+                                        <div class="info-card-text">
+                                                <div class="fs-lg text-truncate text-truncate-lg">Usuário</div>
+                                            </div>
                                     </div>
                                 </div>
                                 <div class="dropdown-divider m-0"></div>

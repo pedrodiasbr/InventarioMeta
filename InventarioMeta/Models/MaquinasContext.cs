@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
-using System.Data.Entity;
 
 namespace InventarioMeta.Models
 {
-    public class Contexto : DbContext
+    public class MaquinasContext : DbContext
     {
-        public DbSet<Maquinas>Maquinas { get; set; }
+        public DbSet<Maquinas> Maquinas { get; set; }
     }
 }

@@ -16,7 +16,7 @@
 <h2>Cadastrar Máquinas</h2>
 
 
-@using (Html.BeginForm())
+@using (Html.BeginForm("Salvar","Maquinas",FormMethod.Post))
 {
     @Html.AntiForgeryToken()
 
@@ -115,4 +115,4 @@
         @section Scripts {
             @Scripts.Render("~/bundles/jqueryval")
         }
-        }
+ }

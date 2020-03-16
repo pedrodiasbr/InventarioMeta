@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using Biblioteca.Dependecia;
 
 namespace InventarioMeta
 {
@@ -12,6 +13,8 @@ namespace InventarioMeta
     {
         protected void Application_Start()
         {
+            IoC.Initialize(new ResolverDependencia());
+
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);

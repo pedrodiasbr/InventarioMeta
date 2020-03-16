@@ -1,7 +1,10 @@
 ﻿
 using System.Collections.Generic;
 using System.Web.Mvc;
+using InventarioMeta.Fabrica;
 using InventarioMeta.Models;
+using Dominio.Entidades;
+using System.Linq;
 
 namespace InventarioMeta.Controllers
 {
@@ -10,16 +13,37 @@ namespace InventarioMeta.Controllers
         // GET: Maquinas
         public ActionResult Index()
         {
-            var maquinas = new List<Maquinas>();
+            var maquinas = Repositorios.MaquinaRepositorio.ObterTodos().Select(r => new Maquinas { 
+                Id = r.Id,
+                RAM = r.RAM,
+                AdaptadorWifi = r.AdaptadorWifi,
+                Processador = r.Processador,
+                SistemaOperacional = r.SistemaOperacional,
+                EspacoArmazenamento = r.EspacoArmazenamento,
+                CodigoTipoArmazenamento = r.CodigoTipoArmazenamento,
+                Responsavel = r.Responsavel
+            });
             return View(maquinas);
         }
 
         // GET: Maquinas/Details/5
         public ActionResult Details(int? id)
         {
-            var maquina = new Maquinas();
+            var maquina = Repositorios.MaquinaRepositorio.Obter(id.Value);
+            var maquinaModel = new Maquinas
+            {
+                Id = maquina.Id,
+                RAM = maquina.RAM,
+                AdaptadorWifi = maquina.AdaptadorWifi,
+                Processador = maquina.Processador,
+                SistemaOperacional = maquina.SistemaOperacional,
+                EspacoArmazenamento = maquina.EspacoArmazenamento,
+                CodigoTipoArmazenamento = maquina.CodigoTipoArmazenamento,
+                Responsavel = maquina.Responsavel
 
-            return View(maquina);
+            }; 
+
+            return View(maquinaModel);
         }
 
         // GET: Maquinas/Create
@@ -42,7 +66,7 @@ namespace InventarioMeta.Controllers
                 new SelectListItem { Text = "SSD", Value = "2" },
                 new SelectListItem { Text = "HD e SSD", Value = "3" }
             };
-
+            
             return tiposArmazenamentos;
         }
 
@@ -51,16 +75,27 @@ namespace InventarioMeta.Controllers
         // obter mais detalhes, consulte https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(Maquinas maquinas)
+        public ActionResult Salvar(Maquinas maquinas)
         {
+
             if (ModelState.IsValid)
             {
-                return RedirectToAction("Index");
-              
-            }
+                tbMaquinas tbMaquinas = new tbMaquinas
+                {
+                    RAM = maquinas.RAM,
+                    AdaptadorWifi = maquinas.AdaptadorWifi,
+                    Processador = maquinas.Processador,
+                    SistemaOperacional = maquinas.SistemaOperacional,
+                    EspacoArmazenamento = maquinas.EspacoArmazenamento,
+                    CodigoTipoArmazenamento = maquinas.CodigoTipoArmazenamento,
+                    Responsavel = maquinas.Responsavel
+                };
 
-            maquinas.TiposArmazenamentos = ObterTiposArmazenamento();
-            return View(maquinas);
+                maquinas.TiposArmazenamentos = ObterTiposArmazenamento();
+                Repositorios.MaquinaRepositorio.Salvar(tbMaquinas);
+            }
+            return RedirectToAction("Index");
+
         }
 
         // GET: Maquinas/Edit/5
@@ -71,7 +106,7 @@ namespace InventarioMeta.Controllers
                 TiposArmazenamentos = ObterTiposArmazenamento()
             };
 
-           // maquina.CodigoTipoArmazenamento = "3";
+            // maquina.CodigoTipoArmazenamento = "3";
 
             return View(maquina);
         }
@@ -85,7 +120,7 @@ namespace InventarioMeta.Controllers
         {
             if (ModelState.IsValid)
             {
-                
+
                 return RedirectToAction("Index");
             }
             return View(maquinas);
